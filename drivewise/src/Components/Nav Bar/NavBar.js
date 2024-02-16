@@ -10,7 +10,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Logo from '../Logo/Logo';
 
 const pages = ['Home', 'About', 'Contact Us'];
 const settings = ['Account', 'Event Dashboard', 'Logout'];
@@ -31,17 +30,21 @@ function ResponsiveAppBar() {
 
   return (
     <>
-      <AppBar position="fixed" style={{ background: '#f96d6d' }}>
+      <AppBar position="fixed" style={{ background: '#291F1E' }} elevation={0}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
 
-            {/* Logo*/}
-            <Logo />
+          <div className="flex lg:flex-1">
+            <a href="#" className="-m-1.5 p-1.5">
+              <span className="sr-only">Your Company</span>
+              <h1 className="text-2xl text-title font-bold">DriveWise</h1>
+            </a>
+          </div>
             
             {/* nav buttons*/}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },}}>
               {pages.map((page) => (
-                <Button key={page} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block' }} component="a" href={'/' + page}>
+                <Button key={page} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + page}>
                   {page}
                 </Button>
               ))}
@@ -87,11 +90,6 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
       {/* Use a Fragment to wrap the AppBar and the content div */}
-      <React.Fragment>
-        <div style={{ paddingTop: '64px' }}>
-          {/* Your text content goes here */}
-        </div>
-      </React.Fragment>
     </>
   );
 }

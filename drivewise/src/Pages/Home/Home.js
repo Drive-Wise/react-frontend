@@ -3,11 +3,12 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, PencilIcon, RectangleStackIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, CircleStackIcon } from '@heroicons/react/20/solid'
 import { ArrowPathIcon} from '@heroicons/react/24/outline'
-import { FaReact } from "react-icons/fa6";
+import ResponsiveAppBar from '../../Components/Nav Bar/NavBar'
 
 export default function Home(){
     return(
         <div>
+            
             <Hero/>
             <Feature />
             <Stack />
@@ -28,36 +29,7 @@ function Hero() {
   return (
     <div className="bg-background">
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-          <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <h1 className="text-2xl text-title font-bold">DriveWise</h1>
-            </a>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-textp">
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-textp">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </nav>
+        <ResponsiveAppBar />
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-50" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
