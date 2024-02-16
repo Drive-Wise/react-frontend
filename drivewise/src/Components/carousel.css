@@ -16,18 +16,3 @@
 p {
     padding-left: 3%;
 }
-
-.g1 {
-    height: 50%;
-    width: 50%;
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(200, 50, 60, 0.8) 0, rgba(300, 20, 2, 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-    transform-origin: center center;
-    animation: moveVertical 30s ease infinite;
-    opacity: 1;
-}
