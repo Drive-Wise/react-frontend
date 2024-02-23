@@ -4,7 +4,8 @@ import { Bars3Icon, PencilIcon, RectangleStackIcon, XMarkIcon } from '@heroicons
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, CircleStackIcon } from '@heroicons/react/20/solid'
 import { ArrowPathIcon} from '@heroicons/react/24/outline'
 import ResponsiveAppBar from '../../Components/Nav Bar/NavBar'
-
+import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
 export default function Home(){
     return(
         <div>
@@ -82,11 +83,10 @@ function Hero() {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-title sm:text-6xl">
-              Data to enrich your online business
+              Insights to drive your journey forward
             </h1>
             <p className="mt-6 text-lg leading-8 text-title">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+              Pioneering smarter, safer driving solutions to navigate the roads of tomorrow.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
@@ -108,13 +108,12 @@ function Hero() {
 
 
 
-
 const features = [
   {
     name: 'React',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    icon: CloudArrowUpIcon,
+    icon: PencilIcon,
   },
   {
     name: 'Node.js',
@@ -173,26 +172,26 @@ const stack = [
   {
     name: 'TailwindCSS',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
-    icon: PencilIcon,
+      'A utility-first CSS framework for rapidly building custom user interfaces without writing CSS from scratch.',
+    icon: BiLogoTailwindCss,
   },
   {
     name: 'React',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
-    icon: RectangleStackIcon,
+      'A JavaScript library for building user interfaces, allowing developers to create reusable UI components and manage stateful data for dynamic web applications.',
+    icon: FaReact,
   },
   {
     name: 'Node.js',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
-    icon: ArrowPathIcon,
+      'A JavaScript runtime built on Chrome\'s V8 JavaScript engine, enabling developers to build scalable server-side applications using JavaScript.',
+    icon: FaNodeJs,
   },
   {
     name: 'MongoDB',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
-    icon: CircleStackIcon,
+      'A NoSQL database designed for ease of development and scaling, offering a flexible document-oriented approach to store data.',
+    icon: BiLogoMongodb,
   },
 ]
 
@@ -205,8 +204,8 @@ function Stack() {
             Our Stack
           </p>
           <p className="mt-6 text-lg leading-8 text-textp">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+            Harness our full-stack solution to create dynamic, scalable web applications with ease, 
+            combining efficient UI development, server-side performance, flexible data management, and rapid styling.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
