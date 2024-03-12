@@ -6,11 +6,40 @@ import { ArrowPathIcon} from '@heroicons/react/24/outline'
 import ResponsiveAppBar from '../../Components/Nav Bar/NavBar'
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
+import City_map from "../../Images/map.jpg";
+import Box from '../../Components/Box/Box'
 export default function Home(){
     return(
         <div>
             
             <Hero/>
+            <div className="bg-background  flex flex-col justify-center items-center" >
+            
+              <Box 
+                  header_text="Drive Wise, Sober driver solutions"
+                  paragraph_text="Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size."
+                  button_text="Get started"
+                  button_link={"https://www.google.com/"}
+                  link_text="Check out our solutions"
+                  link_link={"https://www.google.com/"}
+                  image = {City_map}
+                  flip = 'true'
+              />
+
+              <Box
+                  header_text="The Uber you know, reimagined for business"
+                  paragraph_text="Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size."
+                  button_text="Get started"
+                  button_link={"/About"}
+                  link_text="Check out our solutions"
+                  link_link={""}
+                  image = {City_map}
+                  flip = 'false'
+              />
+
+              
+              
+          </div>
             <Feature />
             <Stack />
         </div>
@@ -28,7 +57,7 @@ function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="bg-background">
+    <div className="bg-background py-2">
       <header className="absolute inset-x-0 top-0 z-50">
         <ResponsiveAppBar />
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
