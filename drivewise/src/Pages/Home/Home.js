@@ -1,8 +1,5 @@
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, PencilIcon, RectangleStackIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, CircleStackIcon } from '@heroicons/react/20/solid'
-import { ArrowPathIcon} from '@heroicons/react/24/outline'
+import {PencilIcon} from '@heroicons/react/24/outline'
+import {LockClosedIcon, ServerIcon} from '@heroicons/react/20/solid'
 import ResponsiveAppBar from '../../Components/Nav Bar/NavBar'
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
@@ -42,22 +39,15 @@ export default function Home(){
               
               
           </div>
-            <Feature />
             <Stack />
             <Footer />
         </div>
     )
 }
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+
 
 function Hero() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="bg-background py-2">
@@ -111,45 +101,6 @@ const features = [
     icon: ServerIcon,
   },
 ]
-
-function Feature() {
-  return (
-    <div className="overflow-hidden bg-background py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div className="lg:pr-8 lg:pt-4">
-            <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-title">Deploy faster</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-textp sm:text-4xl">Our Stack</p>
-              <p className="mt-6 text-lg leading-8 text-textp">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-textp lg:max-w-none">
-                {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-title">
-                      <feature.icon className="absolute left-1 top-1 h-5 w-5 text-title" aria-hidden="true" />
-                      {feature.name}
-                    </dt>{' '}
-                    <dd className="inline">{feature.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-          <img
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-            alt="Product screenshot"
-            className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-            width={2432}
-            height={1442}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 
 
