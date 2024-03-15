@@ -42,12 +42,18 @@ function ResponsiveAppBar() {
           </div>
             
             {/* nav buttons*/}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },}}>
-              {pages.map((page) => (
-                <Button key={page} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + page}>
-                  {page}
+            <Box sx={{ flexGrow: 1, display: { md: 'flex' },}}>
+              
+                <Button key={pages[0]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + pages[0]}>
+                  {pages[0]}
                 </Button>
-              ))}
+                <Button key={pages[1]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + pages[1]}>
+                  {pages[1]}
+                </Button>
+                <Button key={pages[2]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + 'ContactUs'}>
+                  {pages[2]}
+                </Button>
+              
             </Box>
 
             {/*Icon */}

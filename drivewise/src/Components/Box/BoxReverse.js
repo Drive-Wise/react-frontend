@@ -1,12 +1,12 @@
 import React from "react"; 
 
-export default function Box({header_text, paragraph_text, button_text, button_link, link_text, link_link, image, flip}) {
+export default function BoxReverse({header_text, paragraph_text, button_text, button_link, link_text, link_link, image, flip}) {
     
     const imageFlipStyle = flip === 'true' ? 'flex-row-reverse' : 'flex-row' ;
     return (
          
 
-         <div className={`flex lg:w-3/4 m-2 sm:m-4 md:m-6 lg:m-8 xl:m-10  flex-col-reverse lg:flex-row `}>
+         <div className={`flex lg:w-3/4 m-2 sm:m-4 md:m-6 lg:m-8 xl:m-10  flex-col-reverse lg:flex-row-reverse `}>
 
 
             <div className={`flex  lg:w-1/2  lg:${imageFlipStyle}`}>
