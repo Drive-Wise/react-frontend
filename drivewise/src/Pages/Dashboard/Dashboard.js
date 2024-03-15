@@ -1,6 +1,9 @@
+import React from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, UserCircleIcon, UserIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { FaCarAlt } from "react-icons/fa";
+
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -12,6 +15,7 @@ import {
   PencilIcon,
 } from '@heroicons/react/20/solid'
 
+
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
@@ -20,8 +24,6 @@ const user = {
 }
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
   { name: 'Reports', href: '#', current: false },
 ]
@@ -35,17 +37,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout() {
+export default function DashBoard() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -204,9 +198,10 @@ export default function Layout() {
           </div>
         </header>
         <main>
+          
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <Event eventName={"hello"}/>
-            <Event />
+            <Event eventName={"Poker Night"} drivers ={5} location={"1999 Burdett Avenue"} attendees={60} date ={"December 5th 1999"}/>
+            <Event eventName={"BBQ Night"} drivers ={5} location={"1999 Burdett Avenue"} attendees={60} date ={"December 5th 1999"}/>
           </div>
         </main>
       </div>
@@ -215,7 +210,7 @@ export default function Layout() {
 }
 
 
-function Event({eventName,}) {
+function Event({eventName,drivers,location,attendees,date}) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between my-10">
       <div className="min-w-0 flex-1">
@@ -224,20 +219,20 @@ function Event({eventName,}) {
         </h2>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">
-            <BriefcaseIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Full-time
+            <FaCarAlt className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true"/>
+            {drivers}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <MapPinIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Remote
+            {location}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
-            <CurrencyDollarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            $120k &ndash; $140k
+            <UserCircleIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+            {attendees}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Closing on January 9, 2020
+            {date}
           </div>
         </div>
       </div>
@@ -258,17 +253,17 @@ function Event({eventName,}) {
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
             <LinkIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-            View
+            Send Link
           </button>
         </span>
 
         <span className="sm:ml-3">
           <button
             type="button"
-            className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex items-center rounded-md bg-title px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-title focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <CheckIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
-            Publish
+            View Event
           </button>
         </span>
 
