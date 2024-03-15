@@ -3,19 +3,16 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, PlusIcon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { FaCarAlt } from "react-icons/fa";
 import { Dialog } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import {
-  BriefcaseIcon,
   CalendarIcon,
   CheckIcon,
   ChevronDownIcon,
-  CurrencyDollarIcon,
   LinkIcon,
   MapPinIcon,
   PencilIcon,
 } from '@heroicons/react/20/solid'
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { generatePath } from 'react-router-dom';
+import { Button,  Label, TextInput } from 'flowbite-react';
+
 
 
 export default function DashBoard(){
@@ -92,8 +89,8 @@ function DashBoardPage() {
   const { events, addEvent } = useEvents();
   return (
     <>
-      <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+      <div className="min-h-screen bg-background">
+        <Disclosure as="nav" className="bg-background">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -110,7 +107,7 @@ function DashBoardPage() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? 'bg-gray-900 text-textp'
+                                ? 'bg-background text-textp'
                                 : 'text-textp hover:bg-gray-700 hover:text-textp',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
@@ -124,15 +121,6 @@ function DashBoardPage() {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                      <button
-                        type="button"
-                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      >
-                        <span className="absolute -inset-1.5" />
-                        <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
-
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
                         <div>
@@ -240,13 +228,13 @@ function DashBoardPage() {
           )}
         </Disclosure>
 
-        <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Your Events</h1>
+        <header >
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 bg-background">
+            <h1 className="text-3xl font-bold tracking-tight text-title ">Your Events</h1>
           </div>
         </header>
         <main>
-          <div className='flex justify-end mx-auto max-w-7xl py-6 sm:px-6 lg:px-8'>
+          <div className='flex justify-end mx-auto max-w-7xl  sm:px-6 lg:px-8'>
             <ModalButton />
           </div>
           
@@ -266,24 +254,24 @@ function Event({eventName,drivers,location,attendees,date}) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between my-10">
       <div className="min-w-0 flex-1">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+        <h2 className="text-2xl font-bold leading-7 text-title sm:truncate sm:text-2xl sm:tracking-tight">
           {eventName}
         </h2>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <FaCarAlt className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true"/>
+          <div className="mt-2 flex items-center text-sm text-textp">
+            <FaCarAlt className="mr-1.5 h-5 w-5 flex-shrink-0 text-textp" aria-hidden="true"/>
             {drivers}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <MapPinIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+          <div className="mt-2 flex items-center text-sm text-textp">
+            <MapPinIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-textp" aria-hidden="true" />
             {location}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <UserCircleIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+          <div className="mt-2 flex items-center text-sm text-textp">
+            <UserCircleIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-textp" aria-hidden="true" />
             {attendees}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+          <div className="mt-2 flex items-center text-sm text-textp">
+            <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-textp" aria-hidden="true" />
             {date}
           </div>
         </div>
@@ -292,9 +280,9 @@ function Event({eventName,drivers,location,attendees,date}) {
         <span className="hidden sm:block">
           <button
             type="button"
-            className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="inline-flex items-center rounded-md bg-title px-3 py-2 text-sm font-semibold text-textp shadow-sm ring-1 ring-inset ring-title hover:bg-gray-50"
           >
-            <PencilIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+            <PencilIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-textp" aria-hidden="true" />
             Edit
           </button>
         </span>
@@ -302,9 +290,9 @@ function Event({eventName,drivers,location,attendees,date}) {
         <span className="ml-3 hidden sm:block">
           <button
             type="button"
-            className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="inline-flex items-center rounded-md bg-title px-3 py-2 text-sm font-semibold text-textp shadow-sm ring-1 ring-inset ring-title hover:bg-gray-50"
           >
-            <LinkIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+            <LinkIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-textp" aria-hidden="true" />
             Send Link
           </button>
         </span>
