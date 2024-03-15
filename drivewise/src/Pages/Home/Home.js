@@ -9,7 +9,7 @@ import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
 import City_map from "../../Images/map.jpg";
 import Box from '../../Components/Box/Box'
 import BoxReverse from '../../Components/Box/BoxReverse'
-
+import Footer from "../../Components/Footer/Footer"
 export default function Home(){
     return(
         <div>
@@ -44,6 +44,7 @@ export default function Home(){
           </div>
             <Feature />
             <Stack />
+            <Footer />
         </div>
     )
 }
