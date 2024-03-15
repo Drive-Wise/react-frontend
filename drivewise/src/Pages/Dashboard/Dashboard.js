@@ -18,6 +18,14 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { generatePath } from 'react-router-dom';
 
 
+export default function DashBoard(){
+  return(
+    <EventsProvider>
+      <DashBoardPage />
+    </EventsProvider>
+  );
+}
+
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
@@ -41,28 +49,16 @@ function classNames(...classes) {
 
 const EventsContext = createContext();
 
- function useEvents() {
-  return useContext(EventsContext);
+// Here's the `useEvents` hook that was missing
+function useEvents() {
+  const context = useContext(EventsContext);
+  if (context === undefined) {
+    throw new Error('useEvents must be used within an EventsProvider');
+  }
+  return context;
 }
 
 const EventsProvider = ({ children }) => {
-  const [events, setEvents] = useState([
-    // Initial events data
-  ]);
-
-  const addEvent = newEvent => {
-    setEvents(prevEvents => [...prevEvents, newEvent]);
-  };
-
-  return (
-    <EventsContext.Provider value={{ events, addEvent }}>
-      {children}
-    </EventsContext.Provider>
-  );
-};
-
-export default function DashBoard() {
-
   const [events, setEvents] = useState([
     {
       name: "Poker Night",
@@ -80,9 +76,22 @@ export default function DashBoard() {
     }
   ]);
 
+  const addEvent = newEvent => {
+    setEvents(prevEvents => [...prevEvents, newEvent]);
+  };
+
+  return (
+    <EventsContext.Provider value={{ events, addEvent }}>
+      {children}
+    </EventsContext.Provider>
+  );
+};
+
+function DashBoardPage() {
+
+  const { events, addEvent } = useEvents();
   return (
     <>
-      <EventsProvider>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -90,12 +99,8 @@ export default function DashBoard() {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
-                      />
+                    <div className="text-2xl text-title font-bold">
+                      DriveWise
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -105,8 +110,8 @@ export default function DashBoard() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? 'bg-gray-900 text-white'
-                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                ? 'bg-gray-900 text-textp'
+                                : 'text-textp hover:bg-gray-700 hover:text-textp',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
@@ -242,7 +247,7 @@ export default function DashBoard() {
         </header>
         <main>
           <div className='flex justify-end mx-auto max-w-7xl py-6 sm:px-6 lg:px-8'>
-            <ModalButton state={[events, setEvents]}/>
+            <ModalButton />
           </div>
           
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
@@ -252,7 +257,6 @@ export default function DashBoard() {
           </div>
         </main>
       </div>
-      </EventsProvider>
     </>
   )
 }
@@ -367,7 +371,7 @@ function Event({eventName,drivers,location,attendees,date}) {
 function ModalButton(state) {
   const [open, setOpen] = useState(false)
 
-  const cancelButtonRef = useRef(null)
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -381,7 +385,7 @@ function ModalButton(state) {
           Add Event
       </button>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+        <Dialog as="div" className="relative z-10" onClose={handleClose}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -407,7 +411,7 @@ function ModalButton(state) {
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                   <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                    <ModalForm state1={state}/>
+                    <ModalForm closeModal={handleClose}/>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -481,7 +485,7 @@ const formValues = [
 //   );
 // }
 
-function ModalForm() {
+function ModalForm({closeModal}) {
   const { addEvent } = useEvents();
   const [inputValues, setInputValues] = useState({ name: '', location: '', date: '', drivers: '', attendees: '' });
 
@@ -493,6 +497,7 @@ function ModalForm() {
     console.log(inputValues);
     event.preventDefault();
     addEvent(inputValues);
+    closeModal();
     // Reset form or close modal here if needed
   };
 
@@ -503,7 +508,7 @@ function ModalForm() {
           <div className="mb-2 block">
             <Label htmlFor={formValue.hF} value={formValue.v} />
           </div>
-          <TextInput id={formValue.id} type={formValue.id} placeholder="" required/>
+          <TextInput id={formValue.id} type={formValue.id} placeholder="" onChange={(e) => handleChange(formValue.id, e.target.value)} required/>
         </div>
       ))}
       <Button type="submit" className='bg-black'>Submit</Button>
