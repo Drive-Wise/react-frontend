@@ -31,7 +31,7 @@ const user = {
 }
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Calendar', href: '/Calendar', current: false },
   { name: 'Reports', href: '#', current: false },
 ]
 const userNavigation = [
