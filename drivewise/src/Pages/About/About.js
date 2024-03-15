@@ -22,7 +22,7 @@ function About() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     return (
         <div className="bg-background py-2 h-screen">
-            <header className="absolute inset-x-0 top-0 z-50 bg-background">
+            <header className="absolute inset-x-0 top-0 z-50">
                 <ResponsiveAppBar />
 
                 <section class="text-textp body-font">
