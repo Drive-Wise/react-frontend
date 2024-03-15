@@ -4,10 +4,10 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, PencilIcon, RectangleStackIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import "tailwindcss/tailwind.css";
-import Hayden from "../../Images/IMG_3271.jpg";
-import Tomer from "../../Images/IMG_3154.PNG";
-import Henry from "../../Images/IMG_3552.JPG";
-import Jack from "../../Images/IMG_3551.JPG";
+import Hayden from "../../Images/map.jpg";
+import Tomer from "../../Images/map.jpg";
+import Henry from "../../Images/map.jpg";
+import Jack from "../../Images/map.jpg";
 
 
 
@@ -39,7 +39,7 @@ function About() {
                                     <div class="flex-grow sm:pl-8">
                                         <h2 class="title-font font-medium text-lg text-title">Tomer Avgil</h2>
                                         <h3 class="text-title mb-3">Lead/Developer</h3>
-                                        <p class="mb-4">Head of the Jews, Will eventually get to the point probably, Omniscient</p>
+                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id faucibus tellus. Fusce sollicitudin pellentesque iaculis. Fusce lorem diam, hendrerit consectetur bibendum eget, euismod ut justo. In ut volutpat elit.</p>
                                         <span class="inline-flex">
                                             <a class="text-title">
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ function About() {
                                     <div class="flex-grow sm:pl-8">
                                         <h2 class="title-font font-medium text-lg text-title">Henry Babcock</h2>
                                         <h3 class="text-title mb-3">Lead/Developer</h3>
-                                        <p class="mb-4">#StillMyProjectLead, Cant be kept down by Domer, Almost Canadian</p>
+                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id faucibus tellus. Fusce sollicitudin pellentesque iaculis. Fusce lorem diam, hendrerit consectetur bibendum eget, euismod ut justo. In ut volutpat elit.</p>
                                         <span class="inline-flex">
                                             <a class="text-title">
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ function About() {
                                     <div class="flex-grow sm:pl-8">
                                         <h2 class="title-font font-medium text-lg text-title">Hayden Stimpson</h2>
                                         <h3 class="text-title mb-3">Developer/Design</h3>
-                                        <p class="mb-4">Part-Time Pluhhhhhh, The cool one of course, Gets things done eventually</p>
+                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id faucibus tellus. Fusce sollicitudin pellentesque iaculis. Fusce lorem diam, hendrerit consectetur bibendum eget, euismod ut justo. In ut volutpat elit.</p>
                                         <span class="inline-flex">
                                             <a class="text-title">
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ function About() {
                                     <div class="flex-grow sm:pl-8">
                                         <h2 class="title-font font-medium text-lg text-title">Jack DeChiro</h2>
                                         <h3 class="text-title mb-3">Developer</h3>
-                                        <p class="mb-4">Personality of the group, "Maybe RCOS isn't an easy A", Academic Weapon</p>
+                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id faucibus tellus. Fusce sollicitudin pellentesque iaculis. Fusce lorem diam, hendrerit consectetur bibendum eget, euismod ut justo. In ut volutpat elit.</p>
                                         <span class="inline-flex">
                                             <a class="text-title">
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
