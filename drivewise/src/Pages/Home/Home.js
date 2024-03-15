@@ -8,6 +8,8 @@ import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
 import City_map from "../../Images/map.jpg";
 import Box from '../../Components/Box/Box'
+import BoxReverse from '../../Components/Box/BoxReverse'
+
 export default function Home(){
     return(
         <div>
@@ -26,7 +28,7 @@ export default function Home(){
                   flip = 'true'
               />
 
-              <Box
+              <BoxReverse
                   header_text="The Uber you know, reimagined for business"
                   paragraph_text="Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size."
                   button_text="Get started"
