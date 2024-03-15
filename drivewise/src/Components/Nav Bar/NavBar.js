@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Home', 'About', 'Contact Us'];
+const pages = ['Home', 'About', 'Account'];
 const settings = ['Account', 'Event Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
           </div>
             
             {/* nav buttons*/}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },}}>
+            <Box sx={{ flexGrow: 0.86, display: { xs: 'none', md: 'flex' },}}>
               {pages.map((page) => (
                 <Button key={page} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + page}>
                   {page}

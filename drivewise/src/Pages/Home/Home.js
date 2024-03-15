@@ -4,6 +4,7 @@ import { Bars3Icon, PencilIcon, RectangleStackIcon, XMarkIcon } from '@heroicons
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, CircleStackIcon } from '@heroicons/react/20/solid'
 import { ArrowPathIcon} from '@heroicons/react/24/outline'
 import ResponsiveAppBar from '../../Components/Nav Bar/NavBar'
+import Footer from '../../Components/Footer/Footer'
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { BiLogoTailwindCss, BiLogoMongodb } from "react-icons/bi";
 import City_map from "../../Images/map.jpg";
@@ -253,6 +254,9 @@ function Stack() {
           </dl>
         </div>
       </div>
+      <div style={{ marginTop: '50px' }}> {/* Adjust the value as needed */}
+              <Footer />
+            </div>
     </div>
   )
 }
