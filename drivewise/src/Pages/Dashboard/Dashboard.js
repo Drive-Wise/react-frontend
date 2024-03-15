@@ -1,9 +1,9 @@
-import React from 'react';
-import { Fragment } from 'react'
+import React, { createContext, useContext, useState, useRef, Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, UserCircleIcon, UserIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, PlusIcon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { FaCarAlt } from "react-icons/fa";
-
+import { Dialog } from '@headlessui/react'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -14,6 +14,8 @@ import {
   MapPinIcon,
   PencilIcon,
 } from '@heroicons/react/20/solid'
+import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { generatePath } from 'react-router-dom';
 
 
 const user = {
@@ -37,9 +39,50 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const EventsContext = createContext();
+
+ function useEvents() {
+  return useContext(EventsContext);
+}
+
+const EventsProvider = ({ children }) => {
+  const [events, setEvents] = useState([
+    // Initial events data
+  ]);
+
+  const addEvent = newEvent => {
+    setEvents(prevEvents => [...prevEvents, newEvent]);
+  };
+
+  return (
+    <EventsContext.Provider value={{ events, addEvent }}>
+      {children}
+    </EventsContext.Provider>
+  );
+};
+
 export default function DashBoard() {
+
+  const [events, setEvents] = useState([
+    {
+      name: "Poker Night",
+      drivers: 5,
+      location: "1999 Burdett Avenue",
+      attendees: 60,
+      date: "December 5th 1999",
+    },
+    {
+      name: "BBQ Night",
+      drivers: 8,
+      location: "1999 Burdett Avenue",
+      attendees: 70,
+      date: "December 5th 2000",
+    }
+  ]);
+
   return (
     <>
+      <EventsProvider>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -198,13 +241,18 @@ export default function DashBoard() {
           </div>
         </header>
         <main>
+          <div className='flex justify-end mx-auto max-w-7xl py-6 sm:px-6 lg:px-8'>
+            <ModalButton state={[events, setEvents]}/>
+          </div>
           
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <Event eventName={"Poker Night"} drivers ={5} location={"1999 Burdett Avenue"} attendees={60} date ={"December 5th 1999"}/>
-            <Event eventName={"BBQ Night"} drivers ={5} location={"1999 Burdett Avenue"} attendees={60} date ={"December 5th 1999"}/>
+            {events.map(event => (
+              <Event eventName={event.name} drivers={event.drivers} location={event.location} attendees={event.attendees} date={event.date} />
+            ))}
           </div>
         </main>
       </div>
+      </EventsProvider>
     </>
   )
 }
@@ -311,3 +359,155 @@ function Event({eventName,drivers,location,attendees,date}) {
     </div>
   )
 }
+
+
+
+
+
+function ModalButton(state) {
+  const [open, setOpen] = useState(false)
+
+  const cancelButtonRef = useRef(null)
+
+  return (
+    <>
+      <button
+          type="button"
+          className="inline-flex items-center rounded-md bg-title px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-title focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => setOpen(true)}
+          
+        >
+          <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
+          Add Event
+      </button>
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <ModalForm state1={state}/>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
+    </>
+  )
+}
+
+const formValues = [
+  {
+    hF: "name",
+    v: "Event Name",
+    id: "name",
+  },
+  {
+    hF: "location",
+    v: "Location",
+    id: "location",
+  },
+  {
+    hF: "date",
+    v: "Date",
+    id: "date",
+  },
+  {
+    hF: "drivers",
+    v: "Drivers",
+    id: "drivers",
+  },
+  {
+    hF: "attendees",
+    v: "Attendees",
+    id: "attendees",
+  },
+
+]
+
+// function ModalForm(state1) {
+
+//   const [inputValues, setInputValues] = useState({});
+
+//   const handleChange = (id, value) => {
+//     setInputValues(prev => ({
+//       ...prev,
+//       [id]: value,
+//     }));
+//   };
+  
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(inputValues); 
+//     const newEvent = inputValues;
+//     state1[1]([...state1[0], state1[1]]);
+//   };
+//   return (
+//     <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
+      // {formValues.map(formValue => (
+      //   <div>
+      //     <div className="mb-2 block">
+      //       <Label htmlFor={formValue.hF} value={formValue.v} />
+      //     </div>
+      //     <TextInput id={formValue.id} type={formValue.id} placeholder="" required onChange={(e) => handleChange(formValue.id, e.target.value)}/>
+      //   </div>
+      // ))}
+
+//       <Button type="submit" className='bg-black'>Submit</Button>
+//     </form>
+//   );
+// }
+
+function ModalForm() {
+  const { addEvent } = useEvents();
+  const [inputValues, setInputValues] = useState({ name: '', location: '', date: '', drivers: '', attendees: '' });
+
+  const handleChange = (id, value) => {
+    setInputValues({ ...inputValues, [id]: value });
+  };
+  
+  const handleSubmit = (event) => {
+    console.log(inputValues);
+    event.preventDefault();
+    addEvent(inputValues);
+    // Reset form or close modal here if needed
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
+        {formValues.map(formValue => (
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor={formValue.hF} value={formValue.v} />
+          </div>
+          <TextInput id={formValue.id} type={formValue.id} placeholder="" required/>
+        </div>
+      ))}
+      <Button type="submit" className='bg-black'>Submit</Button>
+    </form>
+  );
+}
+
