@@ -42,12 +42,18 @@ function ResponsiveAppBar() {
           </div>
             
             {/* nav buttons*/}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },}}>
-              {pages.map((page) => (
-                <Button key={page} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + page}>
-                  {page}
+            <Box sx={{ flexGrow: 1, display: { md: 'flex' },}}>
+              
+                <Button key={pages[0]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + pages[0]}>
+                  {pages[0]}
                 </Button>
-              ))}
+                <Button key={pages[1]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + pages[1]}>
+                  {pages[1]}
+                </Button>
+                <Button key={pages[2]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + 'ContactUs'}>
+                  {pages[2]}
+                </Button>
+              
             </Box>
 
             {/*Icon */}
@@ -75,11 +81,16 @@ function ResponsiveAppBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu} component="a" href={'/' + setting}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+
+                <MenuItem key={settings[0]} onClick={handleCloseUserMenu} component="a" href={'/SignUp'}>
+                  <Typography textAlign="center">{settings[0]}</Typography>
+                </MenuItem>
+                <MenuItem key={settings[1]} onClick={handleCloseUserMenu} component="a" href={'/EventDashboard'}>
+                  <Typography textAlign="center">{settings[1]}</Typography>
+                </MenuItem>
+                <MenuItem key={settings[2]} onClick={handleCloseUserMenu} component="a" href={'/Logout'}>
+                  <Typography textAlign="center">{settings[2]}</Typography>
+                </MenuItem>
               </Menu>
             </Box>
 
