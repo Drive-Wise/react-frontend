@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'; // Ensure thes
 import { Bars3Icon, XMarkIcon, BellIcon } from '@heroicons/react/24/outline';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import 'fullcalendar/main.css'; 
 const user = {
     name: 'Tom Cook',
     email: 'tom@example.com',
@@ -171,10 +170,18 @@ export default function Calendar(){
 }
  
 function NewCalendar() {
-  return (
-    <FullCalendar
-      plugins={[ dayGridPlugin ]}
-      initialView="dayGridMonth"
-    />
-  )
-}
+    const calendarStyle = {
+      border: '1px solid #000',
+      borderRadius: '5px',
+
+    };
+  
+    return (
+      <div style={calendarStyle}>
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+        />
+      </div>
+    )
+  }
