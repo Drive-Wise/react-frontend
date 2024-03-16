@@ -116,7 +116,7 @@ function Hero() {
             <h1 className="text-4xl font-bold tracking-tight text-title sm:text-6xl">
               Insights to drive your journey forward
             </h1>
-            <p className="mt-6 text-lg leading-8 text-title">
+            <p className="mt-6 text-lg leading-8 text-textp">
               Pioneering smarter, safer driving solutions to navigate the roads of tomorrow.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">

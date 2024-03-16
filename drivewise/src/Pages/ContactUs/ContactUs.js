@@ -13,7 +13,7 @@ export default function Home(){
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-12">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-title">Contact Us</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-title">Here at DriveWise, we value your feedback. Please let us know what you think of our service.</p>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-textp">Here at DriveWise, we value your feedback. Please let us know what you think of our service.</p>
     </div>
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
       <div class="flex flex-wrap -m-2">

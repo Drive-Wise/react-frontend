@@ -11,22 +11,33 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
+
 const pages = ['Home', 'About', 'Contact Us'];
 const settings = ['Account', 'Event Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+  const [anchorElUser2, setAnchorElUser2] = React.useState(null);
+
+  const handleOpenUserMenu2 = (event) => {
+    setAnchorElUser2(event.currentTarget);
+  };
+  
+  const handleCloseUserMenu2 = () => {
+    setAnchorElUser2(null);
+  };
+
+
 
   return (
     <>
@@ -42,7 +53,7 @@ function ResponsiveAppBar() {
           </div>
             
             {/* nav buttons*/}
-            <Box sx={{ flexGrow: 1, display: { md: 'flex' },}}>
+            <Box sx={{ flexGrow: 1, display: {xs: 'none', sm: 'none',  md: 'flex' },}}>
               
                 <Button key={pages[0]} sx={{ mr: 3, my: 2, color: '#ffffff', display: 'block', fontWeight: '550'}} component="a" href={'/' + pages[0]}>
                   {pages[0]}
@@ -56,6 +67,9 @@ function ResponsiveAppBar() {
               
             </Box>
 
+
+            
+
             {/*Icon */}
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" color="inherit"/>
@@ -63,7 +77,7 @@ function ResponsiveAppBar() {
 
             {/*Setting Menu */}
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Tooltip  title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Hayden Stimpson" src="/static/images/avatar/2.jpg" />
                 </IconButton>
@@ -82,13 +96,53 @@ function ResponsiveAppBar() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu} component="a" href={'/' + setting}>
+                  <MenuItem  key={setting} onClick={handleCloseUserMenu} component="a" href={'/' + setting}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
+            
+            {/*Dropdown button */}
+            <Box sx={{ flexGrow: 0, display: {sm: 'justify-end', xs: 'flex', sm: 'flex', md: 'none' }}}>
+            <Tooltip  title="Open pages">
+                <IconButton onClick={handleOpenUserMenu2} sx={{ p: 0 }}>
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="20" y="25" width="60" height="10" fill="#EF5448"/>
+                  <rect x="20" y="45" width="60" height="10" fill="#EF5448"/>
+                  <rect x="20" y="65" width="60" height="10" fill="#EF5448"/>
+                </svg>
 
+                </IconButton>
+              </Tooltip>
+                <Menu sx={{ mt: '45px' }} id="pages-dropdown" anchorEl2={anchorElUser2}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser2)}
+                  onClose={handleCloseUserMenu2}
+                >
+                  <MenuItem  key={pages[0]} onClick={handleCloseUserMenu2} sx={{backgroundColor: '#EF5448',color: '#F5FEF9'}} component="a" href={'/' + pages[0]}>
+                    <Typography textAlign="center">{pages[0]}</Typography>
+                  </MenuItem>
+                  <MenuItem  key={pages[1]} onClick={handleCloseUserMenu2} component="a" href={'/' + pages[1]}>
+                    <Typography textAlign="center">{pages[1]}</Typography>
+                  </MenuItem>
+                  <MenuItem  key={pages[2]} onClick={handleCloseUserMenu2 } component="a" href={'/ContactUs'}>
+                    <Typography textAlign="center">{pages[2]}</Typography>
+                  </MenuItem>
+                  
+                  
+                </Menu>
+            
+              
+            </Box>
 
 
 
