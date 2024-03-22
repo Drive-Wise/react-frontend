@@ -4,6 +4,7 @@ import SignIn from "./Pages/SignIn/SignIn";
 import About from "./Pages/About/About";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import SignUp from "./Pages/SignUp/SignUp";
+import NotFound from "./Pages/NotFound/NotFound"; 
 function App() {
   return (
     <BrowserRouter>
