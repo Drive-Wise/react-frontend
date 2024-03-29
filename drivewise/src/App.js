@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-import Calendar from "./Pages/Calendar/Calendar";
-import DashBoard from "./Pages/Dashboard/Dashboard";
 import SignIn from "./Pages/SignIn/SignIn";
 import About from "./Pages/About/About";
 import ContactUs from "./Pages/ContactUs/ContactUs";
@@ -12,7 +10,10 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/Account" element={<Account />} />
+        <Route path="/About" element = {<About />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
