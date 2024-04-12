@@ -1,33 +1,68 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import ResponsiveAppBar from '../../Components/Nav Bar/NavBar';
 import Footer from '../../Components/Footer/Footer';
 
 export default function Layout() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignUp = async (event) => {
+    event.preventDefault();  // Prevent default form submission behavior
+    try {
+      const response = await fetch('http://127.0.0.1:8000/signup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      console.log(data);  // Log the response data
+      alert('Signup successful!');  // Show a success message
+    } catch (error) {
+      console.error('Failed to sign up:', error);
+      alert('Signup failed!');  // Show an error message
+    }
+  };
+
   return (
-    <div className='bg-background py-2 h-screen'> 
+    <div className='bg-background py-2 h-screen'>
       <section className="text-gray-600 body-font">
         <ResponsiveAppBar />
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-between">
-          <div className="lg:w-2/6 md:w-1/2 bg-grey-700 rounded-lg p-8 flex flex-col md:mr-auto w-full mt-10 md:mt-0">
+          <form className="lg:w-2/6 md:w-1/2 bg-grey-700 rounded-lg p-8 flex flex-col md:mr-auto w-full mt-10 md:mt-0" onSubmit={handleSignUp}>
             <h2 className="text-title text-lg font-medium title-font mb-5">Sign Up</h2>
             <div className="relative mb-4">
-              <label htmlFor="full-name" className="leading-7 text-sm text-white">Email or Phone Number</label>
-              <input type="text" id="full-name" name="full-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+              <label htmlFor="email" className="leading-7 text-sm text-white">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="relative mb-4">
-              <label htmlFor="email" className="leading-7 text-sm text-white">Password</label>
-              <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+              <label htmlFor="password" className="leading-7 text-sm text-white">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <button className="text-white bg-title border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Log In</button>
+            <button type="submit" className="text-white bg-title border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sign Up</button>
             <a href="/SignIn" className="text-xs text-gray-500 mt-3">Back To Sign In</a>
-          </div>
-          <div className="lg:w-3/5 md:w-1/2 md:pl-16 lg:pl-0 pl-0">
-            <h1 className="title-font font-medium text-3xl text-title">Slow-carb next level shoindcgoitch ethical authentic, poko scenester</h1>
-            <p className="leading-relaxed mt-4 text-white">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
-          </div>
+          </form>
         </div>
         <Footer />
       </section>
     </div>
   );
 }
+
